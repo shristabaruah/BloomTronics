@@ -1,0 +1,19 @@
+.wishlist-container {
+  margin: 1rem;
+  font-family: lato, serif;
+}
+.wishlist-main {
+  margin: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+@media screen and (max-width: 500px) {
+  .wishlist-main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+   
+  }
+}
