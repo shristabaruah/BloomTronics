@@ -19,7 +19,7 @@ const ProductCard = ({
                         <div className="price">
                             <p className="offer-price"><i className="fa-solid fa-indian-rupee-sign"></i>{cardPriceBefore}</p>
                             <p className="actual-price"><i className="fa-solid fa-indian-rupee-sign"></i>{cardPrice}</p>
-                            <p className="price-perc">({cardDiscount} OFF)</p>
+                            <p className="price-perc">({cardDiscount}% OFF)</p>
                         </div>
                         </div>
                        <button className="btn secondary-solid add-cart">

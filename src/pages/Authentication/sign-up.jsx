@@ -1,5 +1,6 @@
 import { logo } from "../../assets/index";
 import "./auth.css";
+import { Link } from "react-router-dom";
 
   const SignUp = ()=>{
       return (
@@ -27,19 +28,19 @@ import "./auth.css";
                             <label for="mail">Password</label>
                             <input type="password" placeholder="Password" className="input-password"/>
                         </div>
-                        <div className="profile-checkbox">
-                            <label >
+                    </div>
+                        <div className="profile-checkbox" >
+                            <label className="select-input" >
                                 <input type="checkbox" className="checkbox-input" name="light"/>
-                                <span className="inp-text">I accept all Terms & Conditions.</span>
+                                <span className="inp-text">I accept all Terms &amp; Conditions.</span>
                             </label>
                         </div>
                         <div className="btn ">
-                            <a href="#" target="_blank" className="btn-link">Sign up</a>
+                            <button  className="btn-link">Sign up</button>
                         </div>
                         <div className="secondary-profile ">
-                            <span>Already have an account?</span><a href="../profile/login.html" className="links"> Sign in</a>
+                            <span>Already have an account?</span><Link to="/login" className="links"> Sign in</Link>
                         </div>
-                    </div>
                 </div>
               </div>
           </div>
