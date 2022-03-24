@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Roboto+Slab:wght@300&display=swap');
+
+.profile-container{
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+    box-shadow: var(--color-border);
+}
+.profile-main-container{
+    width: 25rem;
+    padding: 2rem;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-navbar);
+}
+.profile-header{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    margin-bottom: 1rem ;
+}
+.profile-main{
+  margin-left:2rem;
+  font-style:lato, serif;
+  color: var(--black);
+  font-size: 1rem;
+  font-weight: 500;  
+}
+.profile-main .profile-email,.profile-pwd {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    margin: 1rem 0 1rem 0;
+}
+.profile-checkbox  {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom:  1rem ;
+}
+.profile-email input,.profile-pwd input{
+    width: 100%;    
+}
+.links{
+    color: var(--color-primary);
+}
+.links:hover{
+    text-decoration: underline;
+}
+.btn-link{
+    background-color: var(--color-primary);
+    padding: 0.4rem 6rem;
+}
+.secondary-profile{
+    margin: 1rem 0 1rem 1rem ;
+}
+.profile-main-container input {
+    border-radius: 5px;
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0.3rem 1rem;
+    text-transform: capitalize;
+    font-weight: 400;
+    color: var(--color-search);
+}
+.profile-first-last-name{
+    flex-direction: row;
+    gap: 0.5rem;
+}
+.profile-first-last-name input{
+    width: 100%;
+}
+.profile-first-name,.profile-last-name{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+}
+.profile-first-name{
+    margin-bottom:1rem ;
+}
+.inp-text{
+    margin-left: 5px;
+}
+
