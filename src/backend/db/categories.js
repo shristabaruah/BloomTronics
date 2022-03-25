@@ -8,20 +8,26 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "fiction",
+    categoryName: "Television",
     description:
-      "literature in the form of prose, especially novels, that describes imaginary events and people",
+      "Welcome to India's largest TV store",
   },
   {
     _id: uuid(),
-    categoryName: "non-fiction",
+    categoryName: "Smartphone",
     description:
-      "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
+    "India's Mobile superstore with greatest Deal of the year",
   },
   {
     _id: uuid(),
-    categoryName: "horror",
+    categoryName: "Laptop",
     description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
+      "India's Largest Laptop Store",
+  },
+  {
+    _id: uuid(),
+    categoryName: "HomeAppliances",
+    description:
+      "Our selection of home appliances has been designed to promote a comfortable and efficient lifestyle for you and your family",
   },
 ];
