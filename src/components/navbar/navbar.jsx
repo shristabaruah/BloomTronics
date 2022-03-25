@@ -1,37 +1,38 @@
 import "./navbar.css"
 import {logo} from "../../assets/index";
+import { Link } from "react-router-dom";
 const Navbar = ()=>{
     return (<nav className="nav">
         <div className="nav-main">
             <div className="nav-logo">
-                <a href="#" className="logo-link">
+                <Link to="/" className="logo-link">
                 <img className="logo-img" src={logo}></img>
                 <h1 className="nav-header">BloomTronics</h1>
-                </a>
+                </Link>
             </div>
             <div className="nav-search">
             <input type="text" class="search-box" placeholder="Search"/>
             <button className="search-btn"><i className="fa-solid fa-magnifying-glass"></i></button>
             </div>
             <div className="nav-items">
-                <a href="#" className="sign-in">
+                <Link to="/signup" className="sign-in">
                 <i className="fa-solid fa-circle-user"></i>
-                </a>
+                </Link>
                 <div className="icon cart-badge">
-                    <a href="#">
+                    <Link to="/wishlist">
                         <i className="fa-solid fa-heart"></i>
                         <div className="notification-icon flex-center">
                             <span>3</span>
                         </div>   
-                    </a>
+                    </Link>
                 </div> 
                 <div className="icon cart-badge">
-                    <a href="#">
+                    <Link to="/cart">
                         <i className="fa-solid fa-cart-shopping"></i>
                         <div className="notification-icon flex-center">
                             <span>2</span>
                         </div>
-                    </a>
+                    </Link>
                 </div>
                 <div className="icon ">
                     <a href="#">

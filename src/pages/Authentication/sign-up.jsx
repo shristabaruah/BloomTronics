@@ -1,5 +1,6 @@
 import { logo } from "../../assets/index";
 import "./auth.css";
+import { Link } from "react-router-dom";
 
   const SignUp = ()=>{
       return (
@@ -12,34 +13,34 @@ import "./auth.css";
                 <div className="profile-main">
                     <div className="profile-first-last-name">
                         <div className="profile-first-name">
-                            <label for="first name">First Name</label>
+                            <label htmlFor="first name">First Name</label>
                             <input type="text" placeholder="First Name" className="input-text"/>
                         </div>
                         <div className="profile-last-name">
-                            <label for="last name">Last Name</label>
+                            <label htmlFor="last name">Last Name</label>
                             <input type="text" placeholder="Last Name" className="input-text"/>
                         </div>
                         <div className="profile-email">
-                            <label for="mail">Email Address</label>
+                            <label htmlFor="mail">Email Address</label>
                             <input type="text"placeholder='Email' className="input-text"/>
                         </div>
                         <div className="profile-pwd">
-                            <label for="mail">Password</label>
+                            <label htmlFor="mail">Password</label>
                             <input type="password" placeholder="Password" className="input-password"/>
                         </div>
-                        <div className="profile-checkbox">
-                            <label >
+                    </div>
+                        <div className="profile-checkbox" >
+                            <label className="select-input" >
                                 <input type="checkbox" className="checkbox-input" name="light"/>
-                                <span className="inp-text">I accept all Terms & Conditions.</span>
+                                <span className="inp-text">I accept all Terms &amp; Conditions.</span>
                             </label>
                         </div>
                         <div className="btn ">
-                            <a href="#" target="_blank" className="btn-link">Sign up</a>
+                            <button  className="btn-link">Sign up</button>
                         </div>
                         <div className="secondary-profile ">
-                            <span>Already have an account?</span><a href="../profile/login.html" className="links"> Sign in</a>
+                            <span>Already have an account?</span><Link to="/login" className="links"> Sign in</Link>
                         </div>
-                    </div>
                 </div>
               </div>
           </div>

@@ -74,6 +74,7 @@
 .profile-first-last-name{
     flex-direction: row;
     gap: 0.5rem;
+    width: 100%;
 }
 .profile-first-last-name input{
     width: 100%;
@@ -88,7 +89,5 @@
 .profile-first-name{
     margin-bottom:1rem ;
 }
-.inp-text{
-    margin-left: 5px;
-}
+
 

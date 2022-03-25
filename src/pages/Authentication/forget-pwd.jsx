@@ -1,5 +1,6 @@
 import { logo } from "../../assets/index";
 import "./auth.css";
+import { Link } from "react-router-dom";
 
 const ForgetPwd = ()=>{
     return (
@@ -11,14 +12,14 @@ const ForgetPwd = ()=>{
                 </div>
                 <div className="profile-main">
                     <div className="profile-email">
-                        <label for="mail">Enter your email and we will send you a link to reset your password.</label>
+                        <label htmlFor="mail">Enter your email and we will send you a link to reset your password.</label>
                         <input type="text"placeholder='Email' className="input-text"/>
                     </div>
                     <div className="btn ">
-                        <a href="#" target="_blank" className="btn-link">SUBMIT</a>
+                        <button className="btn-link">SUBMIT</button>
                     </div>
                     <div classNmae="secondary-profile ">
-                        <a href="../profile/signin.html" className="links">Back to Sign in</a>
+                        <Link to="/login" className="links">Back to Sign in</Link>
                     </div>
                 </div>
             </div>

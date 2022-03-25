@@ -1,0 +1,22 @@
+.product-container{
+    display: flex;
+    margin: 1rem;
+}
+.product-header{
+    display: flex;
+    gap: .5rem;
+    padding: 1rem;
+}
+.product-header > .sub-text{
+    font-size: 1rem;
+    font-family: lato,serif;
+}
+.product-main-list{
+    width: 100%;
+    margin-left:25px ;
+}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    grid-gap: 1.5rem;
+}

@@ -1,5 +1,6 @@
 import { logo } from "../../assets/index";
 import "./auth.css";
+import { Link } from "react-router-dom";
 
 const Login = ()=>{
     return (
@@ -11,11 +12,11 @@ const Login = ()=>{
                 </div>
                 <div className="profile-main">
                     <div className="profile-email">
-                        <label for="mail">Email Address</label>
+                        <label htmlFor="mail">Email Address</label>
                         <input type="text"placeholder='Email' className="input-text"/>
                     </div>
                     <div className="profile-pwd">
-                        <label for="mail">Password</label>
+                        <label htmlFor="mail">Password</label>
                         <input type="password" placeholder="Password" className="input-password"/>
                     </div>
                     <div className="profile-checkbox">
@@ -23,14 +24,14 @@ const Login = ()=>{
                             <input type="checkbox" className="checkbox-input" name="light"/>
                             <span className="inp-text">Remember Me</span>
                         </label>
-                        <a href="../profile/forgot-pass.html" className="links">Forgot Password?</a>
+                        <Link to="/forget-Password" className="links">Forgot Password?</Link>
                     </div>
                     <div className="btn ">
-                        <a href="#" target="_blank" className="btn-link">Login</a>
+                        <button  target="_blank" className="btn-link">Login</button>
                     </div>
                     <div className="secondary-profile ">
                         <span >Not registered?</span> 
-                        <a href="../profile/signin.html" className="links">Create an Account</a>
+                        <Link to="/signup" className="links">Create an Account</Link>
                     </div>
                 </div>
             </div>
