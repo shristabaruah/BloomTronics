@@ -12,11 +12,11 @@ const Login = ()=>{
                 </div>
                 <div className="profile-main">
                     <div className="profile-email">
-                        <label for="mail">Email Address</label>
+                        <label htmlFor="mail">Email Address</label>
                         <input type="text"placeholder='Email' className="input-text"/>
                     </div>
                     <div className="profile-pwd">
-                        <label for="mail">Password</label>
+                        <label htmlFor="mail">Password</label>
                         <input type="password" placeholder="Password" className="input-password"/>
                     </div>
                     <div className="profile-checkbox">

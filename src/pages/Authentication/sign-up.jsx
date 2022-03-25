@@ -13,19 +13,19 @@ import { Link } from "react-router-dom";
                 <div className="profile-main">
                     <div className="profile-first-last-name">
                         <div className="profile-first-name">
-                            <label for="first name">First Name</label>
+                            <label htmlFor="first name">First Name</label>
                             <input type="text" placeholder="First Name" className="input-text"/>
                         </div>
                         <div className="profile-last-name">
-                            <label for="last name">Last Name</label>
+                            <label htmlFor="last name">Last Name</label>
                             <input type="text" placeholder="Last Name" className="input-text"/>
                         </div>
                         <div className="profile-email">
-                            <label for="mail">Email Address</label>
+                            <label htmlFor="mail">Email Address</label>
                             <input type="text"placeholder='Email' className="input-text"/>
                         </div>
                         <div className="profile-pwd">
-                            <label for="mail">Password</label>
+                            <label htmlFor="mail">Password</label>
                             <input type="password" placeholder="Password" className="input-password"/>
                         </div>
                     </div>

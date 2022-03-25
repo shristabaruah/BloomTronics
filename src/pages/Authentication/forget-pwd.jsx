@@ -12,7 +12,7 @@ const ForgetPwd = ()=>{
                 </div>
                 <div className="profile-main">
                     <div className="profile-email">
-                        <label for="mail">Enter your email and we will send you a link to reset your password.</label>
+                        <label htmlFor="mail">Enter your email and we will send you a link to reset your password.</label>
                         <input type="text"placeholder='Email' className="input-text"/>
                     </div>
                     <div className="btn ">
