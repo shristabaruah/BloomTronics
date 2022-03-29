@@ -1,0 +1,17 @@
+.card-img {
+    width: 15rem;
+    object-fit: cover;
+    height: 10rem;
+}
+.rating {
+    color: var(--color-primary);
+    background-color: black;
+    font-weight: 700;
+    position: absolute;
+    display: inline-block;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+    right: 2%;
+    top: 2%;
+    cursor: pointer;
+  }  
