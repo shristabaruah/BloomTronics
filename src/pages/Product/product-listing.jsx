@@ -1,83 +1,58 @@
-import "./product-listing.css"
+import "./product-listing.css";
 import { Filter } from "./components/filters";
 import { ProductCard } from "../../components";
-import { RedHeadphone, headphone } from "../../assets";
+import { useFilter } from "../../contexts/filter-context";
+import {
+  sortData,
+  priceRange,
+  bestsellerFilter,
+  categoryFilter,
+  ratingFilter,
+  inStockFilter,
+} from "../../functions/index";
+import { useFetchData } from "../../services/getdataservice";
 
 const ProductListing = () => {
+  const { Filterstate } = useFilter();
+  const products = useFetchData();
+
+  const sortFilter = sortData(products, Filterstate);
+  const priceRangeFilter = priceRange(sortFilter, Filterstate);
+  const bestSellerFilter = bestsellerFilter(priceRangeFilter, Filterstate);
+  const categoriesFilter = categoryFilter(bestSellerFilter, Filterstate);
+  const ratingsFilter = ratingFilter(categoriesFilter, Filterstate);
+  const dataFilter = inStockFilter(ratingsFilter, Filterstate);
+
   return (
-    <div class="product-container">
+    <div className="product-container">
       <Filter />
-      <div class="product-main-list">
-        <div class="product-header">
+      <div className="product-main-list">
+        <div className="product-header">
           <h3>All Products</h3>
-          <span class="sub-text">-12 items</span>
+          <span className="sub-text">{dataFilter.length}</span>
         </div>
-        <div class="grid">
-          <ProductCard
-            cardImage={RedHeadphone}
-            cardTitle={"Red Headphone"}
-            cardDescp={"Master & Dynamic"}
-            cardPriceBefore={"2999"}
-            cardPrice={"1499"}
-            cardDiscount={"50"}
-          />
-
-          <ProductCard
-            cardImage={headphone}
-            cardTitle={"New Smart Phone"}
-            cardDescp={"Master & Dynamic"}
-            cardPriceBefore={"22999"}
-            cardPrice={"20999"}
-            cardDiscount={"20"}
-          />
-
-          <ProductCard
-            cardImage={RedHeadphone}
-            cardTitle={"Red Headphone"}
-            cardDescp={"Master & Dynamic"}
-            cardPriceBefore={"2999"}
-            cardPrice={"1499"}
-            cardDiscount={"50"}
-          />
-
-          <ProductCard
-            cardImage={RedHeadphone}
-            cardTitle={"Red Headphone"}
-            cardDescp={"Master & Dynamic"}
-            cardPriceBefore={"2999"}
-            cardPrice={"1499"}
-            cardDiscount={"50"}
-          />
-
-            <ProductCard
-            cardImage={RedHeadphone}
-            cardTitle={"Red Headphone"}
-            cardDescp={"Master & Dynamic"}
-            cardPriceBefore={"2999"}
-            cardPrice={"1499"}
-            cardDiscount={"50"}
-          />
-
-            <ProductCard
-            cardImage={RedHeadphone}
-            cardTitle={"Red Headphone"}
-            cardDescp={"Master & Dynamic"}
-            cardPriceBefore={"2999"}
-            cardPrice={"1499"}
-            cardDiscount={"50"}
-          />
-           <ProductCard
-            cardImage={RedHeadphone}
-            cardTitle={"Red Headphone"}
-            cardDescp={"Master & Dynamic"}
-            cardPriceBefore={"2999"}
-            cardPrice={"1499"}
-            cardDiscount={"50"}
-          />
+        <div className="grid">
+          {dataFilter.map((p) => {
+            return (
+              <ProductCard
+                key={p.id}
+                imgSrc={p.imgSrc}
+                alt={p.title}
+                badge={p.badge}
+                rating={p.rating}
+                title={p.title}
+                descp={p.brand}
+                priceBefore={p.priceBefore}
+                price={p.price}
+                inStock={p.inStock}
+                discount={p.discount}
+              />
+            );
+          })}
         </div>
       </div>
     </div>
   );
 };
 
-export { ProductListing } ;
+export { ProductListing };

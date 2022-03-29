@@ -1,25 +1,35 @@
 import "./product-card.css"
 const ProductCard = ({
-  cardImage,
-  cardTitle,
-  cardBadge,
-  cardDescp,
-  cardPrice,
-  cardPriceBefore,
-  cardDiscount,
+  id, 
+  inStock, 
+  imgSrc,
+  title,
+  badge,
+  rating,
+  descp,
+  price,
+  alt,
+  priceBefore,
+  discount,
 })=>{
     return (
         <div className="card">
-                <img className="card-img" src={cardImage} alt=""/>
-                <span class="card-badge">{cardBadge}</span>
+            {(inStock===true) ?  null:(
+                     <span className="card-overlay">
+                     <div>OUT OF STOCK</div> 
+                     </span>)
+            }
+                <img className="card-img" src={imgSrc} alt={alt}/>
+                {badge ? <span className="card-badge">{badge}</span>:""}
+                <span className="rating">{rating}<i className="fa-solid fa-star"></i></span>
                     <div className="card-info">
                         <div className="card-title">
-                            <h3 className="card-header">{cardTitle}</h3>
-                            <p className="card-description">{cardDescp}</p>            	 			      			</div>
+                            <h3 className="card-header">{title}</h3>
+                            <p className="card-description">{descp}</p>            	 			      			</div>
                         <div className="price">
-                            <p className="offer-price"><i className="fa-solid fa-indian-rupee-sign"></i>{cardPriceBefore}</p>
-                            <p className="actual-price"><i className="fa-solid fa-indian-rupee-sign"></i>{cardPrice}</p>
-                            <p className="price-perc">({cardDiscount}% OFF)</p>
+                            <p className="offer-price"><i className="fa-solid fa-indian-rupee-sign"></i>{price}</p>
+                            <p className="actual-price"><i className="fa-solid fa-indian-rupee-sign"></i>{priceBefore}</p>
+                            <p className="price-perc">({discount}% OFF)</p>
                         </div>
                         </div>
                        <button className="btn secondary-solid add-cart">
