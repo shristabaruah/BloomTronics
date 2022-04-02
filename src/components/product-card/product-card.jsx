@@ -16,8 +16,7 @@ const ProductCard = (props) => {
   } = props;
 
   const { wishlist, addToWishlist, removeWishlist } = useWishlist();
-  //   const itemExistsInWishlist = wishlist.some((item)=>item._id === _id);
-  //   console.log(itemExistsInWishlist)
+ 
 
   const toggleWishlist = (product) => {
     const itemExists = wishlist.some((item) => item._id === product._id);
