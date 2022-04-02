@@ -19,7 +19,8 @@ const Home = () => {
           {latestProducts.map((p) => {
             return (
               <ProductCard
-                key={p.id}
+                key={p._id}
+                _id={p._id}
                 imgSrc={p.imgSrc}
                 alt={p.title}
                 badge={p.badge}
@@ -71,7 +72,8 @@ const Home = () => {
         <div className="product-card">
           {bestseller.map((p) => (
             <ProductCard
-              key={p.id}
+              key={p._id}
+              _id={p._id}
               imgSrc={p.imgSrc}
               alt={p.title}
               badge={p.badge}

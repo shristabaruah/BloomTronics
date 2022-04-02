@@ -14,4 +14,9 @@
     right: 2%;
     top: 2%;
     cursor: pointer;
-  }  
+  }
+ 
+ 
+  .wishlist > .fa-heart {
+      color:var(--color-primary)
+  }

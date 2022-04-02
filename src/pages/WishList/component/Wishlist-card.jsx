@@ -1,36 +1,50 @@
+import { useWishlist } from "../../../contexts/wishlist-context";
 import "./Wishlist-card.css";
-const WishlistCard = ({
-  cardImage,
-  cardTitle,
-  cardDescp,
-  cardPrice,
-  cardPriceBefore,
-  cardDiscount,
-}) => {
+const WishlistCard = (props) => {
+  const {
+    _id,
+    imgSrc,
+    title,
+    badge,
+    descp,
+    price,
+    alt,
+    priceBefore,
+    discount} = props
+  const { removeWishlist }= useWishlist();
+
+
+  const removeHandler = (_id)=>{
+
+    removeWishlist(_id)
+    
+  }
+
   return (
     <div className="wish-card">
-      <img className="wish-card-img" src={cardImage} alt="" />
-      <span className="card-delete">
+      <img className="wish-card-img" src={imgSrc} alt={alt} />
+      {badge ? <span className="card-badge">{badge}</span>:""}
+      <span className="card-delete" onClick={()=>removeHandler(_id)}>
         <i className="fa-solid fa-xmark"></i>
       </span>
       <div className="card-info">
         <div className="card-title">
-          <h3 className="card-header">{cardTitle}</h3>
-          <p className="card-description">{cardDescp}</p>{" "}
+          <h3 className="card-header">{title}</h3>
+          <p className="card-description">{descp}</p>
         </div>
         <div className="price">
           <p className="offer-price">
             <i className="fa-solid fa-indian-rupee-sign"></i>
-            {cardPriceBefore}
+            {priceBefore}
           </p>
           <p className="actual-price">
             <i className="fa-solid fa-indian-rupee-sign"></i>
-            {cardPrice}
+            {price}
           </p>
-          <p className="price-perc">({cardDiscount}% OFF)</p>
+          <p className="price-perc">({discount}% OFF)</p>
         </div>
       </div>
-      <button className="btn secondary-solid add-bag">Move to cart</button>
+      <button className="btn secondary-solid add-bag"  >Move to cart</button>
     </div>
   );
 };
