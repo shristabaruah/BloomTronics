@@ -36,6 +36,7 @@ const ProductListing = () => {
             return (
               <ProductCard
                 key={p.id}
+                _id={p._id}
                 imgSrc={p.imgSrc}
                 alt={p.title}
                 badge={p.badge}

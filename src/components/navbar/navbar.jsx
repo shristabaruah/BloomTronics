@@ -2,8 +2,10 @@ import "./navbar.css";
 import { logo } from "../../assets/index";
 import { Link } from "react-router-dom";
 import { useFilter } from "../../contexts/filter-context";
+import { useWishlist } from "../../contexts/wishlist-context";
 
 const Navbar = () => {
+  const { wishlist } = useWishlist();
   const { Filterdispatch } = useFilter();
 
   const Smartphone = () => {
@@ -48,7 +50,7 @@ const Navbar = () => {
       <div className="nav-main">
         <div className="nav-logo">
           <Link to="/" className="logo-link">
-            <img className="logo-img" src={logo}></img>
+            <img className="logo-img" src={logo} alt="logo"></img>
             <h1 className="nav-header">BloomTronics</h1>
           </Link>
         </div>
@@ -66,7 +68,7 @@ const Navbar = () => {
             <Link to="/wishlist">
               <i className="fa-solid fa-heart"></i>
               <div className="notification-icon flex-center">
-                <span>3</span>
+                <span>{wishlist.length}</span>
               </div>
             </Link>
           </div>
@@ -79,9 +81,9 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="icon ">
-            <a href="#">
+            <Link to="/login">
               <i className="fa-solid fa-arrow-right-from-bracket"></i>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
