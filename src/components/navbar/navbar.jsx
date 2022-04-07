@@ -3,10 +3,12 @@ import { logo } from "../../assets/index";
 import { Link } from "react-router-dom";
 import { useFilter } from "../../contexts/filter-context";
 import { useWishlist } from "../../contexts/wishlist-context";
+import { useCart } from "../../contexts/cart-context";
 
 const Navbar = () => {
   const { wishlist } = useWishlist();
   const { Filterdispatch } = useFilter();
+  const { cart } =useCart();
 
   const Smartphone = () => {
     Filterdispatch({
@@ -76,7 +78,7 @@ const Navbar = () => {
             <Link to="/cart">
               <i className="fa-solid fa-cart-shopping"></i>
               <div className="notification-icon flex-center">
-                <span>2</span>
+                <span>{cart.length}</span>
               </div>
             </Link>
           </div>

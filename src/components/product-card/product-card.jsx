@@ -1,5 +1,7 @@
+import { useCart } from "../../contexts/cart-context";
 import { useWishlist } from "../../contexts/wishlist-context";
 import "./product-card.css";
+
 const ProductCard = (props) => {
   const {
     _id,
@@ -15,7 +17,17 @@ const ProductCard = (props) => {
     discount,
   } = props;
 
+
   const { wishlist, addToWishlist, removeWishlist } = useWishlist();
+  const { cart , addToCart , navigate} = useCart();
+  const productInWishlist =  wishlist.some((item) => item._id === _id);
+  const productInCart = cart.some((item)=>item._id === _id);
+
+  const addToCartHandler = (product)=>{
+
+    addToCart(product);
+
+    }
  
 
   const toggleWishlist = (product) => {
@@ -57,14 +69,14 @@ const ProductCard = (props) => {
           <p className="price-perc">({discount}% OFF)</p>
         </div>
       </div>
-      <button className="btn secondary-solid add-cart">Add to cart</button>
+      <button className="btn secondary-solid add-cart" onClick={()=>productInCart ? navigate("/cart") :addToCartHandler(props)}>{productInCart ? "Go to Cart" : "Add To Cart"}</button>
       <button
         className="btn secondary-solid wishlist"
         onClick={() => toggleWishlist(props)}
       >
         <i
           className={
-            wishlist.some((item) => item._id === _id)
+              productInWishlist
               ? "wish fa fa-heart "
               : "fa fa-heart-o "
           }

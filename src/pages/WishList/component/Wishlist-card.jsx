@@ -1,3 +1,4 @@
+import { useCart } from "../../../contexts/cart-context";
 import { useWishlist } from "../../../contexts/wishlist-context";
 import "./Wishlist-card.css";
 const WishlistCard = (props) => {
@@ -12,13 +13,15 @@ const WishlistCard = (props) => {
     priceBefore,
     discount} = props
   const { removeWishlist }= useWishlist();
+  const { addToCart , navigate ,cart} = useCart(); 
+  const productInCart = cart.some((item)=>item._id === _id);
 
 
-  const removeHandler = (_id)=>{
-
-    removeWishlist(_id)
+  const addToCartHandler = (product)=>addToCart(product);
+     
+  const removeHandler = (_id)=>removeWishlist(_id)
     
-  }
+ 
 
   return (
     <div className="wish-card">
@@ -44,7 +47,7 @@ const WishlistCard = (props) => {
           <p className="price-perc">({discount}% OFF)</p>
         </div>
       </div>
-      <button className="btn secondary-solid add-bag"  >Move to cart</button>
+      <button className="btn secondary-solid add-bag" onClick={()=>productInCart ? navigate("/cart") :addToCartHandler(props)}>{productInCart ? "Go to Cart" : "Add To Cart"} </button>
     </div>
   );
 };
