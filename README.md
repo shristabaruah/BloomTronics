@@ -2,7 +2,7 @@
 
 <h1 align="center">
 <br />
-<a href="https://bloomtronics.vercel.app/"><img src="src\assets\logo.png" alt="Bloom Tronics" width="200"></a>
+<a href="https://bloomtronics.vercel.app/"><img src="./src/assets/logo.png" alt="Bloom Tronics" width="200"></a>
 
 <br/>
 </h1>
