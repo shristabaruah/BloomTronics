@@ -98,7 +98,7 @@ const Filter = () => {
       <div className="filter-price center-hr">
         <h4 className="header">PRICE</h4>
         <div className="price-main ">
-          <label htmlFor="slider-input">Rs 0 - Rs {rangeValue}</label>
+          <label htmlFor="slider-input">&#8377;0  -  &#8377;{rangeValue}</label>
           <input
             type="range"
             className="slider-input"

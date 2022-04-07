@@ -14,6 +14,14 @@
     font-weight: 500;
     margin: 0.5rem;
 }
+.qty input{
+    border: 2px solid var(--color-primary);
+    text-align: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    margin: 0 0.5rem;
+}
 .minus,.add,.qty-count{
     width: 2rem;
     height: 2rem;
@@ -24,6 +32,7 @@
     color: var(--black);
     background-color: var(--color-border);
     margin-bottom: 0.5rem;
+    cursor: pointer;
 }
 .horizontal-btn .buy-now{
     margin-right: 0.5rem; 
