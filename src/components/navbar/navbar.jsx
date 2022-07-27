@@ -1,14 +1,30 @@
 import "./navbar.css";
 import { logo } from "../../assets/index";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useFilter } from "../../contexts/filter-context";
 import { useWishlist } from "../../contexts/wishlist-context";
 import { useCart } from "../../contexts/cart-context";
+import { useAuth } from "../../contexts/auth-context";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const { wishlist } = useWishlist();
   const { Filterdispatch } = useFilter();
-  const { cart } =useCart();
+  const { cart } = useCart();
+  const navigate = useNavigate();
+  const { authDispatch } = useAuth();
+
+  const logoutHandler = () => {
+    navigate("/");
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    authDispatch({ type: "LOGOUT" });
+    toast.success("You Logged out");
+  };
+
+  const userHandler = (type) => {
+    type === "Login" ? navigate("/login") : logoutHandler();
+  };
 
   const Smartphone = () => {
     Filterdispatch({
@@ -82,10 +98,8 @@ const Navbar = () => {
               </div>
             </Link>
           </div>
-          <div className="icon ">
-            <Link to="/login">
-              <i className="fa-solid fa-arrow-right-from-bracket"></i>
-            </Link>
+          <div className="icon " onClick={userHandler}>
+            <i className="fa-solid fa-arrow-right-from-bracket"></i>
           </div>
         </div>
       </div>

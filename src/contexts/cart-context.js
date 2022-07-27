@@ -4,27 +4,27 @@ import { useNavigate } from "react-router-dom";
 
 const CartContext = createContext();
 
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJhM2RlZjRlMS1kNGY2LTQ4NjItYTY3Ny01NmRkNDI0NDg0ZTEiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.Qp89fuxRPRdk4xRhdIlLomynnh2aPIVr2V5dm7LubNo";
-
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
-  const  navigate  = useNavigate();
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
 
   useEffect(
     () =>
       (async () => {
-        try {
-          const response = await axios.get("api/user/cart", {
-            headers: { authorization: token },
-          });
+        if (token) {
+          try {
+            const response = await axios.get("api/user/cart", {
+              headers: { authorization: token },
+            });
 
-          setCart(response.data.cart);
-        } catch (e) {
-          console.error("error:", e);
+            setCart(response.data.cart);
+          } catch (e) {
+            console.error("error:", e);
+          }
         }
       })(),
-    []
+    [token]
   );
 
   const addToCart = async (products) => {
@@ -58,7 +58,7 @@ const CartProvider = ({ children }) => {
     try {
       const response = await axios.post(
         `api/user/cart/${id}`,
-        { action: {type} },
+        { action: { type } },
         { headers: { authorization: token } }
       );
       setCart(response.data.cart);

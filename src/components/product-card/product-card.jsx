@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+import { useAuth } from "../../contexts/auth-context";
 import { useCart } from "../../contexts/cart-context";
 import { useWishlist } from "../../contexts/wishlist-context";
 import "./product-card.css";
@@ -17,25 +19,35 @@ const ProductCard = (props) => {
     discount,
   } = props;
 
-
   const { wishlist, addToWishlist, removeWishlist } = useWishlist();
-  const { cart , addToCart , navigate} = useCart();
-  const productInWishlist =  wishlist.some((item) => item._id === _id);
-  const productInCart = cart.some((item)=>item._id === _id);
+  const { cart, addToCart, navigate } = useCart();
+  const productInWishlist = wishlist.some((item) => item._id === _id);
+  const productInCart = cart.some((item) => item._id === _id);
+  const {
+    authState: { token },
+  } = useAuth();
 
-  const addToCartHandler = (product)=>{
-
-    addToCart(product);
-
+  const addToCartHandler = (product) => {
+    if (token) {
+      addToCart(product);
+      toast.success("Added to Cart");
+    } else {
+      navigate("/login");
     }
- 
+  };
 
   const toggleWishlist = (product) => {
-    const itemExists = wishlist.some((item) => item._id === product._id);
-    if (itemExists) {
-      removeWishlist(product._id);
+    if (token) {
+      const itemExists = wishlist.some((item) => item._id === product._id);
+      if (itemExists) {
+        removeWishlist(product._id);
+        toast.success("Removed from wishlist");
+      } else {
+        addToWishlist(product);
+        toast.success("Added to Wishlist");
+      }
     } else {
-      addToWishlist(product);
+      navigate("/login");
     }
   };
 
@@ -69,17 +81,20 @@ const ProductCard = (props) => {
           <p className="price-perc">({discount}% OFF)</p>
         </div>
       </div>
-      <button className="btn secondary-solid add-cart" onClick={()=>productInCart ? navigate("/cart") :addToCartHandler(props)}>{productInCart ? "Go to Cart" : "Add To Cart"}</button>
+      <button
+        className="btn secondary-solid add-cart"
+        onClick={() =>
+          productInCart ? navigate("/cart") : addToCartHandler(props)
+        }
+      >
+        {productInCart ? "Go to Cart" : "Add To Cart"}
+      </button>
       <button
         className="btn secondary-solid wishlist"
         onClick={() => toggleWishlist(props)}
       >
         <i
-          className={
-              productInWishlist
-              ? "wish fa fa-heart "
-              : "fa fa-heart-o "
-          }
+          className={productInWishlist ? "wish fa fa-heart " : "fa fa-heart-o "}
           aria-hidden="true"
         ></i>
       </button>
