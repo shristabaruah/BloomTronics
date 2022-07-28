@@ -28,14 +28,13 @@ const ProductCard = (props) => {
     authState: { token },
   } = useAuth();
 
-  const [loader , setLoader] = useState(false)
+  const [btnDisabled , setBtnDisabled] = useState(false)
 
 
 
   const addToCartHandler = (product) => {
     if (token) {
-      addToCart(product);
-      setLoader(true)
+      addToCart(product , setBtnDisabled);
       toast.success("Added to Cart");
     } else {
       navigate("/login");
@@ -46,10 +45,10 @@ const ProductCard = (props) => {
     if (token) {
       const itemExists = wishlist.some((item) => item._id === product._id);
       if (itemExists) {
-        removeWishlist(product._id);
+        removeWishlist(product._id , setBtnDisabled);
         toast.success("Removed from wishlist");
       } else {
-        addToWishlist(product);
+        addToWishlist(product , setBtnDisabled);
         toast.success("Added to Wishlist");
       }
     } else {
@@ -89,7 +88,7 @@ const ProductCard = (props) => {
       </div>
       <button
         className="btn secondary-solid add-cart"
-        disabled={loader}
+        disabled={btnDisabled}
         onClick={() =>
           productInCart ? navigate("/cart") : addToCartHandler(props)
         }
@@ -97,6 +96,7 @@ const ProductCard = (props) => {
         {productInCart ? "Go to Cart" : "Add To Cart"}
       </button>
       <button
+      disabled={btnDisabled}
         className="btn secondary-solid wishlist"
         onClick={() => toggleWishlist(props)}
       >

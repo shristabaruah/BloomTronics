@@ -27,8 +27,9 @@ const CartProvider = ({ children }) => {
     [token]
   );
 
-  const addToCart = async (products) => {
+  const addToCart = async (products , setBtnDisabled) => {
     try {
+      setBtnDisabled(true)
       const response = await axios.post(
         "api/user/cart",
         { product: products },
@@ -40,6 +41,8 @@ const CartProvider = ({ children }) => {
       setCart(response.data.cart);
     } catch (e) {
       console.error("error", e);
+    }finally{
+      setBtnDisabled(false)
     }
   };
 
