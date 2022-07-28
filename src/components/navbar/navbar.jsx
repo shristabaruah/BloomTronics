@@ -35,6 +35,7 @@ const Navbar = () => {
       },
     });
   };
+
   const Television = () => {
     Filterdispatch({
       type: "CATEGORY_FILTER",

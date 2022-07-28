@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { toast } from "react-toastify";
 import { useAuth } from "../../contexts/auth-context";
 import { useCart } from "../../contexts/cart-context";
@@ -27,9 +28,14 @@ const ProductCard = (props) => {
     authState: { token },
   } = useAuth();
 
+  const [loader , setLoader] = useState(false)
+
+
+
   const addToCartHandler = (product) => {
     if (token) {
       addToCart(product);
+      setLoader(true)
       toast.success("Added to Cart");
     } else {
       navigate("/login");
@@ -83,6 +89,7 @@ const ProductCard = (props) => {
       </div>
       <button
         className="btn secondary-solid add-cart"
+        disabled={loader}
         onClick={() =>
           productInCart ? navigate("/cart") : addToCartHandler(props)
         }
