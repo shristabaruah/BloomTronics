@@ -1,12 +1,17 @@
+import { toast } from "react-toastify";
+import { logo } from "../../../../assets";
+import { useAuth } from "../../../../contexts/auth-context";
 import { useCart } from "../../../../contexts/cart-context";
 import {
   getDiscountPrice,
-  getPrice,
   getTotalPrice,
 } from "../../../../functions/CartSummary";
 import "./cart-summary.css";
 const CartSummary = () => {
-  const { cart } = useCart();
+  const { cart, removeCart, navigate } = useCart();
+  const {
+    authState: { user },
+  } = useAuth();
 
   const cartSummary = {
     deliveryCharge: 80,
@@ -15,6 +20,53 @@ const CartSummary = () => {
   };
 
   const totalPrice = cartSummary.price + cartSummary.deliveryCharge;
+
+  const loadScript = () => {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+      document.body.appendChild(script);
+    });
+  };
+
+  const placeOrder = async () => {
+    const response = await loadScript();
+    if (response) {
+      const options = {
+        key: "rzp_test_qA26GvCzWjJUc7",
+        amount: totalPrice * 100,
+        currency: "INR",
+        name: "Bloomtronics",
+        description: "Test Transaction",
+        image: logo,
+        handler: function (response) {
+          cart.map((product) => {
+            removeCart(product._id);
+            navigate("/products");
+          });
+          toast.success("Payment is successfull");
+        },
+        prefill: {
+          name: user.firstName,
+          email: user.email,
+          contact: "9999999999",
+        },
+        notes: { address: "Razorpay Corporate Office" },
+        theme: { color: "#FFA500" },
+      };
+      const paymentObject = new window.Razorpay(options);
+      paymentObject.open();
+    } else {
+      toast.error("Something went wrong");
+    }
+  };
 
   return (
     <div className="order-summary">
@@ -67,7 +119,7 @@ const CartSummary = () => {
           </ul>
         </li>
       </div>
-      <button className="btn primary-solid order">
+      <button className="btn primary-solid order" onClick={placeOrder}>
         <a>PLACE ORDER</a>
       </button>
     </div>
