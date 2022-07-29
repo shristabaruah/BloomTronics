@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { useCart } from "../../../../contexts/cart-context";
 import { useWishlist } from "../../../../contexts/wishlist-context";
 import "./cart-card.css";
@@ -17,6 +18,7 @@ const CartCard =( {product}) => {
 
     const removeCartHandler =(product)=>{
       removeCart(product._id)
+      toast.info(`${product.title} is removed from cart`)
     };
 
     const updateQtyHandler = (product,type,_id ) =>{
