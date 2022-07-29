@@ -16,6 +16,7 @@ const Cart = () => {
          {cart.map((p)=>{return(
           <CartCard 
          product={p}
+         key={p._id}
           />
           )})} 
        

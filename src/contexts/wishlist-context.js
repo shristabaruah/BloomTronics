@@ -26,8 +26,9 @@ const WishlistProvider = ({ children }) => {
     [token, navigate]
   );
 
-  const addToWishlist = async (products) => {
+  const addToWishlist = async (products ,setBtnDisabled) => {
     try {
+      setBtnDisabled(true)
       const response = await axios.post(
         "/api/user/wishlist",
         { product: products },
@@ -36,16 +37,21 @@ const WishlistProvider = ({ children }) => {
       setWishlist(response.data.wishlist);
     } catch (e) {
       console.error("error:", e);
+    }finally{
+      setBtnDisabled(false)
     }
   };
-  const removeWishlist = async (id) => {
+  const removeWishlist = async (id , setBtnDisabled) => {
     try {
+      setBtnDisabled(true)
       const response = await axios.delete(`/api/user/wishlist/${id}`, {
         headers: { authorization: token },
       });
       setWishlist(response.data.wishlist);
     } catch (e) {
       console.error("error:", e);
+    }finally{
+      setBtnDisabled(false)
     }
   };
 
