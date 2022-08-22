@@ -5,3 +5,4 @@ export { SignUp } from "./Authentication/sign-up";
 export { Login } from "./Authentication/login";
 export { Home } from "./Homepage/home";
 export {ProductListing }from "./Product/product-listing";
+export {SingleProductPage} from "./SingleProductPage/Single-product"

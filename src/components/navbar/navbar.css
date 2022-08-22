@@ -25,6 +25,7 @@
    margin: 1rem 1rem;
    color: var(--dark-grey);
 }
+
 .nav-items {
    display: flex;
    align-items: center;
@@ -84,9 +85,12 @@
 .links-container{
    width: 100%;
    display: flex;
+   position: relative;
    padding: 10px 10vw;
    justify-content: center;
    list-style: none;
+   overflow: auto;
+   scrollbar-width: none;
    border-top: 1px solid var(--color-border);
 }
    
@@ -103,4 +107,23 @@
 .link:hover{
    color: var(--orange);
    opacity: 1;
+}
+@media screen and (max-width: 800px){
+   .nav-logo h1{
+      display: none;
+   }
+}
+@media screen and (max-width: 600px){
+   
+   .nav-search{
+      order:2;
+      margin: 0;
+
+   }
+  img{
+   align-self: flex-start;
+  }
+   .nav-main{
+      flex-wrap: wrap;
+   }
 }

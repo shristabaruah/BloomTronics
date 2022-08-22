@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { Footer, Navbar, RequireAuth } from "./components";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -12,9 +12,11 @@ import {
   Login,
   SignUp,
   ForgetPwd,
+  SingleProductPage,
 } from "./pages";
 
 function App() {
+  const location = useLocation();
   return (
     <>
       <ToastContainer
@@ -29,7 +31,8 @@ function App() {
         draggable
         pauseOnHover
       />
-      <Navbar />
+
+      {location.pathname !== "/products" && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
@@ -44,6 +47,8 @@ function App() {
           }
         />
         <Route path="/products" element={<ProductListing />} />
+        <Route path="/products/:productId" element={<SingleProductPage />} />
+
         <Route
           path="/cart"
           element={

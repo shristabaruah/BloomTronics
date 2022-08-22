@@ -1,5 +1,5 @@
 .cart-wrapper{
-    margin: 1rem;
+    margin: 1rem ;
 }
 .cart-wrapper  .flex-center{
     border-bottom: 1px solid var(--color-border);
@@ -28,7 +28,7 @@
 }
 
 
-@media screen and (max-width: 500px){
+@media screen and (max-width: 750px){
     .horizontal-img{
         width: 100px;
     }
