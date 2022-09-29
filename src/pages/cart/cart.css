@@ -1,5 +1,6 @@
 .cart-wrapper{
     margin: 1rem ;
+    min-height: 67vh;
 }
 .cart-wrapper  .flex-center{
     border-bottom: 1px solid var(--color-border);

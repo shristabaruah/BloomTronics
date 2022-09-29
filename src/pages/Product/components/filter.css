@@ -4,7 +4,7 @@
   position: fixed;
   position: relative;
   top: 0;
-  display:none;
+  display: none;
   align-self: flex-start;
   flex-direction: column;
   gap: 1rem;
@@ -39,15 +39,15 @@
 .radio-input {
   accent-color: var(--orange);
 }
-.price-main{
-display: flex;
-flex-direction: column;
+.price-main {
+  display: flex;
+  flex-direction: column;
 }
 .slider {
   height: 7px;
   background-color: var(--dark-grey);
 }
-.slider-input{
+.slider-input {
   width: 50%;
 }
 .slider::-webkit-slider-thumb {
@@ -86,10 +86,10 @@ flex-direction: column;
   background-color: var(--black);
   border: 1px solid var(--color-border);
   color: var(--color-primary);
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 700;
 }
-.filter-mob-layout{
+.filter-mob-layout {
   border: 1px solid black;
   width: 100%;
   position: fixed;
@@ -105,7 +105,7 @@ flex-direction: column;
   overflow-y: scroll;
   z-index: 10;
 }
-.sort-mob-layout{
+.sort-mob-layout {
   border: 1px solid black;
   width: 100%;
   position: fixed;
@@ -124,13 +124,13 @@ flex-direction: column;
   .filter-buttons {
     display: none;
   }
-  .filter-mob-layout{
+  .filter-mob-layout {
     display: none !important;
   }
-  .sort-mob-layout{
+  .sort-mob-layout {
     display: none !important;
   }
-  .filter-container{
+  .filter-container {
     display: flex;
   }
 }
