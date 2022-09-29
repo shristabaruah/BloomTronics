@@ -47,11 +47,11 @@ const WishlistProvider = ({ children }) => {
       const response = await axios.delete(`/api/user/wishlist/${id}`, {
         headers: { authorization: token },
       });
+      setBtnDisabled(false)
+
       setWishlist(response.data.wishlist);
     } catch (e) {
       console.error("error:", e);
-    }finally{
-      setBtnDisabled(false)
     }
   };
 

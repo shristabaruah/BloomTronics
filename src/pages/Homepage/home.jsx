@@ -2,6 +2,7 @@ import { Hero } from "./components/hero/hero";
 import { ProductCard } from "../../components/index";
 import "./home.css";
 import { useFetchData } from "../../services/getdataservice";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const products = useFetchData();
@@ -20,7 +21,7 @@ const Home = () => {
             return (
               <ProductCard
                 key={p._id}
-                _id={p._id}
+                _id={p.id}
                 imgSrc={p.imgSrc}
                 alt={p.title}
                 badge={p.badge}
@@ -73,7 +74,7 @@ const Home = () => {
           {bestseller.map((p) => (
             <ProductCard
               key={p._id}
-              _id={p._id}
+              _id={p.id}
               imgSrc={p.imgSrc}
               alt={p.title}
               badge={p.badge}

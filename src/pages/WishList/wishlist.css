@@ -1,5 +1,6 @@
 .wishlist-container {
   margin: 1rem;
+  min-height: 67vh;
   font-family: lato, serif;
 }
 .wishlist-main {

@@ -10,6 +10,10 @@
     padding-bottom: 1rem;
     border-bottom: 1px solid var(--color-border);
 }
+.coupon-discount{
+    cursor: pointer;
+    color: var(--color-primary);
+}
 .price-details{
     padding: .5rem 0;
 }

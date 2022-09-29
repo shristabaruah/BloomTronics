@@ -1,18 +1,21 @@
 import "./navbar.css";
 import { logo } from "../../assets/index";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useFilter } from "../../contexts/filter-context";
 import { useWishlist } from "../../contexts/wishlist-context";
 import { useCart } from "../../contexts/cart-context";
 import { useAuth } from "../../contexts/auth-context";
 import { toast } from "react-toastify";
+import { useState } from "react";
 
-const Navbar = () => {
+const Navbar = ({ setSearchInput }) => {
   const { wishlist } = useWishlist();
   const { Filterdispatch } = useFilter();
   const { cart } = useCart();
   const navigate = useNavigate();
   const { authDispatch } = useAuth();
+  const location = useLocation();
+  const [searchBtn, setSearchBtn] = useState("");
 
   const logoutHandler = () => {
     navigate("/");
@@ -63,7 +66,10 @@ const Navbar = () => {
       },
     });
   };
-
+  const searchInputHandler = (searchBtn) => {
+    setSearchInput(searchBtn);
+    setSearchBtn("");
+  };
   return (
     <nav className="nav">
       <div className="nav-main">
@@ -73,12 +79,23 @@ const Navbar = () => {
             <h1 className="nav-header">BloomTronics</h1>
           </Link>
         </div>
-        <div className="nav-search">
-          <input type="text" className="search-box" placeholder="Search" />
-          <button className="search-btn">
-            <i className="fa-solid fa-magnifying-glass"></i>
-          </button>
-        </div>
+        {location.pathname === "/products" && (
+          <div className="nav-search">
+            <input
+              type="search"
+              className="search-box"
+              placeholder="Search"
+              onChange={(e) => setSearchBtn(e.target.value)}
+              value={searchBtn}
+            />
+            <button
+              className="search-btn"
+              onClick={() => searchInputHandler(searchBtn)}
+            >
+              <i className="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+        )}
         <div className="nav-items">
           <Link to="/signup" className="sign-in">
             <i className="fa-solid fa-circle-user"></i>
@@ -107,22 +124,22 @@ const Navbar = () => {
       <ul className="links-container">
         <li className="link-item">
           <Link to="/products" className="link" onClick={Television}>
-            TV's Audio , Video
+            Television
           </Link>
         </li>
         <li className="link-item">
           <Link to="/products" className="link" onClick={Smartphone}>
-            Smartphone & Gadget
+            Smartphone
           </Link>
         </li>
         <li className="link-item">
           <Link to="/products" className="link" onClick={Laptop}>
-            Computer & Laptops
+            Laptops
           </Link>
         </li>
         <li className="link-item">
           <Link to="/products" className="link" onClick={HomeAppliances}>
-            Home Appliances
+            Appliances
           </Link>
         </li>
       </ul>

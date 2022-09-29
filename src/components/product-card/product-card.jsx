@@ -8,6 +8,7 @@ import "./product-card.css";
 const ProductCard = (props) => {
   const {
     _id,
+    id,
     inStock,
     imgSrc,
     title,
@@ -55,6 +56,9 @@ const ProductCard = (props) => {
       navigate("/login");
     }
   };
+  const navigateToSinglePage = (_id)=>{
+    navigate(`/products/${_id}`)
+  }
 
   return (
     <div className="card">
@@ -63,7 +67,7 @@ const ProductCard = (props) => {
           <div>OUT OF STOCK</div>
         </span>
       )}
-      <img className="card-img" src={imgSrc} alt={alt} />
+      <img className="card-img" src={imgSrc} alt={alt} onClick={()=>navigateToSinglePage(_id)}/>
       {badge ? <span className="card-badge">{badge}</span> : ""}
       <span className="rating">
         {rating}

@@ -1,42 +1,44 @@
-.product-category{
-    margin: 1rem;
-    background-color: var(--orange);
-    padding: 1rem;
-    width: 15rem;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius:80px ;
+.product-category {
+  margin: 1rem;
+  background-color: var(--orange);
+  padding: 1rem;
+  width: 15rem;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 80px;
 }
-.product-card{
-    margin: 1rem;
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+.product-card {
+  margin: 1rem;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-.category-facilities{
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    margin: 3rem 1rem ;
-    gap: 10px;
-    background-color: var(--color-navbar);
+.category-facilities {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 3rem 0;
+  gap: 10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  background-color: var(--color-navbar);
 }
-.facilities{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 2rem;
-    gap: 10px;
+.facilities {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 2rem;
+  gap: 10px;
 }
-.icon-facilities{
-    font-size: 2rem;
-    color: var(--color-primary);
-    border-radius: 50%;
-    padding: 2rem;
-    border: 0.1px solid var(--color-border);
+.icon-facilities {
+  font-size: 2rem;
+  color: var(--color-primary);
+  border-radius: 50%;
+  padding: 2rem;
+  border: 0.1px solid var(--color-border);
 }
-.text-center{
-    color: var(--black);
-    padding: 1rem;
-    font-size: 1.2rem;
+.text-center {
+  color: var(--black);
+  padding: 1rem;
+  font-size: 1.2rem;
 }
